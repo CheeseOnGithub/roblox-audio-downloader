@@ -1,5 +1,6 @@
 import requests
 import json
+import pyfiglet
 
 def getLocation(id: str):
     return json.loads(requests.get("https://assetdelivery.roblox.com/v2/asset/?ID=" + id, headers= {
@@ -43,6 +44,9 @@ def downloadAudio(url: str):
     file.write(data.content)
     file.close()
 
-location = str(getLocation("613368945"))
-
-downloadAudio(location)
+if __name__ == "__main__":
+    print(pyfiglet.figlet_format("audio stuff", "big"))
+    id = input("id: ")
+    location = str(getLocation(id))
+    downloadAudio(location)
+    print("downloaded :3")
